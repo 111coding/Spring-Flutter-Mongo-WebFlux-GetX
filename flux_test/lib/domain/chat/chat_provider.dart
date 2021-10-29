@@ -20,4 +20,11 @@ class ChatProvider extends GetConnect {
       // TODO Exception
     }
   }
+
+  Future<Response> sendChat(int receiver, int sender, String msg) async =>
+      await post("$url/chat", {
+        "receiver": receiver,
+        "sender": sender,
+        "msg": msg,
+      });
 }

@@ -4,21 +4,21 @@ class Chat {
     this.receiver,
     this.sender,
     this.msg,
-    this.createdAd,
+    this.createdAt,
   });
 
   String? id;
   int? receiver;
   int? sender;
   String? msg;
-  String? createdAd;
+  String? createdAt;
 
   factory Chat.fromJson(Map<String, dynamic> json) => Chat(
         id: json["id"],
         receiver: json["receiver"],
         sender: json["sender"],
         msg: json["msg"],
-        createdAd: json["createdAd"],
+        createdAt: json["createdAt"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -26,6 +26,6 @@ class Chat {
         "receiver": receiver,
         "sender": sender,
         "msg": msg,
-        "createdAd": createdAd,
+        "createdAt": createdAt,
       };
 }

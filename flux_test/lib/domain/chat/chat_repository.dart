@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flux_test/domain/chat/chat.dart';
 import 'package:flux_test/domain/chat/chat_provider.dart';
+import 'package:get/get_connect.dart';
 import 'package:http/http.dart' as http;
 
 class ChatRepository {
@@ -23,5 +24,16 @@ class ChatRepository {
         .where((v) => v.contains("receiver"))
         .map((v) => Chat.fromJson(jsonDecode(v)));
     return chatStream;
+  }
+
+  Future<Chat?> sendChat(int receiver, int sender, String msg) async {
+    Response response = await _chatProvider.sendChat(receiver, sender, msg);
+    try {
+      // print(response.body);
+      return Chat.fromJson(jsonDecode(response.bodyString!));
+    } catch (e) {
+      print("$e");
+      // TODO Exception
+    }
   }
 }

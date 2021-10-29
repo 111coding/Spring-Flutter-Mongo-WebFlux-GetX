@@ -26,4 +26,9 @@ class ChatController extends GetxController {
     chat.bindStream(chatStream);
     return true;
   }
+
+  Future<bool> sendChat(int receiver, int sender, String msg) async {
+    Chat? sendedChat = await _chatRepository.sendChat(receiver, sender, msg);
+    return sendedChat == null ? false : true;
+  }
 }
